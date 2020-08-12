@@ -37,7 +37,6 @@ public class CidadeRest {
 		}
 		return repository.findByNomeStartsWithOrEstado(nome, estadoDefault).map(record -> ResponseEntity.ok().body(record))
 				.orElse(ResponseEntity.notFound().build());
-
 	}
 
 	@PostMapping
