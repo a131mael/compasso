@@ -6,7 +6,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -23,12 +24,10 @@ public class Cliente {
 	private Long id;
 
 	private String nome;
-
-	private SexoEnum sexo;
 	
+	private SexoEnum sexo;	
+	
+	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="dd/MM/yyyy")
 	private LocalDate nascimento;
-	
-	@ManyToOne
-	private Cidade enderecoCidade;
-	
+			
 }

@@ -2,6 +2,7 @@ package com.abimael.teste.compasso.model;
 
 public enum EstadoEnum {
 
+	NULO("N","Nulo"), 
 	ACRE("AC","Acre"), 
 	ALAGOAS("AL","Alagoas"),
 	AMAPA("AP","Amapá"),

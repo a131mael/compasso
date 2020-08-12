@@ -1,5 +1,7 @@
 package com.abimael.teste.compasso.rest;
 
+import java.util.List;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -8,6 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.abimael.teste.compasso.model.Cliente;
@@ -21,7 +24,7 @@ public class ClienteRest {
 
 	ClienteRest(ClienteRepository repository) {
 	       this.repository = repository;
-	 }
+	 }	
 	
 	@GetMapping(path = {"/{id}"})
 	public ResponseEntity<Cliente> findById(@PathVariable long id){
@@ -30,9 +33,9 @@ public class ClienteRest {
 	           .orElse(ResponseEntity.notFound().build());
 	}
 	
-	@GetMapping(path = {"/name/{name}"})
-	public ResponseEntity<Cliente> findByName(@PathVariable String name){
-	   return repository.findByName(name).map(record -> ResponseEntity.ok().body(record))
+	@GetMapping
+	public ResponseEntity<List<Cliente>> findByNome(@RequestParam(defaultValue = "#") String nome){
+	   return repository.findByNomeStartsWith(nome).map(record -> ResponseEntity.ok().body(record))
 	           .orElse(ResponseEntity.notFound().build());
 	}
 	

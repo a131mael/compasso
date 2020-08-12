@@ -7,11 +7,10 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import com.abimael.teste.compasso.model.Cidade;
+import com.abimael.teste.compasso.model.EstadoEnum;
 
 @Repository
 public interface CidadeRepository extends JpaRepository<Cidade, Long> {
-
-	public Optional<Cidade> findByName(String name);
-
-	public Optional<List<Cidade>> findByState(String state);
+	
+	public Optional<List<Cidade>> findByNomeStartsWithOrEstado(String nome, EstadoEnum estado);
 }

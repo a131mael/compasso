@@ -1,13 +1,11 @@
 package com.abimael.teste.compasso;
 
 import org.junit.jupiter.api.Test;
-import org.springframework.boot.test.context.SpringBootTest;
 
-@SpringBootTest
 class CompassoApplicationTests {
 
-	@Test
+	@Test	
 	void contextLoads() {
 	}
-
+	
 }
